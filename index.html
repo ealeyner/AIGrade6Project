@@ -25,6 +25,7 @@
     border: 4px solid #3e2a14;
     box-shadow: 0 8px 24px rgba(0,0,0,0.5);
     image-rendering: pixelated;
+    cursor: none;
   }
   #hud {
     margin-bottom: 8px;
@@ -71,7 +72,169 @@
     border-color: rgba(255, 215, 120, 0.55);
     box-shadow: 0 0 10px rgba(255, 215, 120, 0.35);
   }
-</style>
+  #menuBtn {
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(15, 25, 18, 0.55);
+    color: #ffd54f;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+    user-select: none;
+  }
+  #menuBtn:hover { background: rgba(35, 50, 40, 0.75); }
+  .hidden { display: none !important; }
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+  }
+  .menu-card {
+    background: linear-gradient(135deg, #1a0a3a 0%, #2d1860 50%, #4a2580 100%);
+    padding: 36px 56px;
+    border-radius: 18px;
+    border: 2px solid #ffd54f;
+    box-shadow: 0 0 60px rgba(255, 215, 80, 0.45);
+    text-align: center;
+    color: #fff;
+    max-width: 520px;
+    width: 90%;
+    max-height: 92vh;
+    overflow-y: auto;
+  }
+  .menu-card h1 {
+    color: #ffd54f;
+    font-size: 48px;
+    margin: 0 0 4px;
+    text-shadow: 0 0 24px rgba(255, 215, 80, 0.8);
+    letter-spacing: 2px;
+  }
+  .menu-card h2 {
+    color: #ffd54f;
+    font-size: 32px;
+    margin: 0 0 16px;
+    text-shadow: 0 0 16px rgba(255, 215, 80, 0.6);
+  }
+  .menu-card p {
+    color: #e1bee7;
+    font-size: 16px;
+    margin: 0 0 20px;
+  }
+  .menu-card .menu-hint {
+    color: #b39ddb;
+    font-size: 12px;
+    margin: -2px 0 14px;
+    font-style: italic;
+  }
+  .menu-btn {
+    display: block;
+    width: 100%;
+    padding: 14px 20px;
+    margin: 16px 0 4px;
+    font-size: 18px;
+    background: linear-gradient(180deg, #ffd54f, #c98c00);
+    border: 2px solid #7a5a00;
+    border-radius: 10px;
+    color: #1a0a3a;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    font-family: 'Trebuchet MS', sans-serif;
+    transition: transform 0.1s ease, box-shadow 0.2s ease;
+  }
+  .menu-btn:hover {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(255, 215, 80, 0.55);
+  }
+  .menu-btn:active { transform: translateY(0); }
+  .small-btn {
+    padding: 6px 14px;
+    font-size: 13px;
+    background: linear-gradient(180deg, #b39ddb, #7e57c2);
+    border: 1px solid #4a148c;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Trebuchet MS', sans-serif;
+    margin-left: 8px;
+  }
+  .small-btn:hover { background: linear-gradient(180deg, #ce93d8, #9575cd); }
+  .save-btn { background: linear-gradient(180deg, #66bb6a, #2e7d32); border-color: #1b5e20; }
+  #loginRow, #loggedInRow, #pendingScoreRow {
+    background: rgba(255, 255, 255, 0.07);
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  #loginRow label { color: #e1bee7; font-size: 14px; }
+  #playerName {
+    padding: 6px 10px;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #7a5a00;
+    border-radius: 6px;
+    color: #fff;
+    width: 160px;
+    font-family: 'Trebuchet MS', sans-serif;
+  }
+  .pending-score { color: #c5e1a5; font-size: 14px; }
+  .leaderboard-list {
+    text-align: left;
+    margin: 14px 0;
+    max-height: 320px;
+    overflow-y: auto;
+  }
+  .lb-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 14px;
+    margin: 4px 0;
+    background: rgba(255, 215, 80, 0.08);
+    border: 1px solid rgba(255, 215, 80, 0.2);
+    border-radius: 6px;
+    font-size: 15px;
+  }
+  .lb-entry.me {
+    background: rgba(102, 187, 106, 0.18);
+    border-color: rgba(102, 187, 106, 0.6);
+  }
+  .lb-rank { color: #ffd54f; font-weight: bold; margin-right: 10px; min-width: 28px; display: inline-block; }
+  .lb-name { color: #fff; flex: 1; }
+  .lb-stats { color: #b39ddb; font-size: 13px; }
+  .lb-empty { color: #b39ddb; text-align: center; font-style: italic; padding: 20px; }
+  .practice-banner {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, #4caf50, #2e7d32);
+    color: #fff;
+    padding: 4px 16px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 1px solid #1b5e20;
+    z-index: 100;
+  }</style>
 </head>
 <body>
 <div id="wrap">
@@ -87,9 +250,49 @@
   <div id="canvasWrap">
     <canvas id="game" width="900" height="520"></canvas>
     <button id="cozyBtn" title="Vibe (when on: 1-5 = jump level)" aria-label="Vibe">✨</button>
+    <button id="menuBtn" title="Menu" class="hidden">☰</button>
   </div>
-  <div id="help">← → move &nbsp;·&nbsp; SPACE/↑/W = jump (glide L2+, FLY L5) &nbsp;·&nbsp; ↓/S = descend (L5) &nbsp;·&nbsp; X = banana &nbsp;·&nbsp; SHIFT = dash (L3) &nbsp;·&nbsp; Q = blink (L4) &nbsp;·&nbsp; T = teleport (L5) &nbsp;·&nbsp; R = restart</div>
 </div>
+
+<!-- Main Menu -->
+<div id="mainMenu" class="overlay hidden">
+  <div class="menu-card">
+    <h1>JUNGLE GOD</h1>
+    <p id="mainMenuSubtitle">VENGEANCE COMPLETE</p>
+    <button class="menu-btn" id="btnPractice">🎯 PRACTICE</button>
+    <p class="menu-hint">Test every ability in a no-stakes sandbox</p>
+    <button class="menu-btn" id="btnReplay">🔁 REPLAY STORY</button>
+    <p class="menu-hint">Watch the intro and play all 5 levels again</p>
+    <button class="menu-btn" id="btnLeaderboard">🏆 LEADERBOARD</button>
+    <p class="menu-hint">Sign in and see the top scores</p>
+  </div>
+</div>
+
+<!-- Leaderboard Panel -->
+<div id="leaderboardPanel" class="overlay hidden">
+  <div class="menu-card leaderboard-card">
+    <h2>🏆 LEADERBOARD</h2>
+    <div id="loginRow">
+      <label for="playerName">Player:</label>
+      <input type="text" id="playerName" placeholder="your name" maxlength="20">
+      <button id="btnLogin" class="small-btn">Sign In</button>
+    </div>
+    <div id="loggedInRow" class="hidden">
+      <span>Signed in as <strong id="loggedInName"></strong></span>
+      <button id="btnLogout" class="small-btn">Sign Out</button>
+    </div>
+    <div id="pendingScoreRow" class="hidden">
+      <div class="pending-score">
+        ⭐ New score ready: <strong id="pendingScoreText"></strong>
+        <button id="btnSaveScore" class="small-btn save-btn">Save Score</button>
+      </div>
+    </div>
+    <div id="leaderboardList" class="leaderboard-list"></div>
+    <button class="menu-btn" id="btnCloseLeaderboard">← BACK</button>
+  </div>
+</div>
+
+<div id="help">← → move &nbsp;·&nbsp; SPACE/↑/W = jump (glide L2+, FLY L5) &nbsp;·&nbsp; ↓/S = descend (L5) &nbsp;·&nbsp; X = banana &nbsp;·&nbsp; SHIFT = dash (L3) &nbsp;·&nbsp; Q = blink (L4) &nbsp;·&nbsp; T = teleport (L5) &nbsp;·&nbsp; R = restart</div>
 
 <script>
 (() => {
@@ -119,6 +322,10 @@
   let levelTransition = 0;
   let levelTransitionMax = 0;
   let levelTransitionNext = 2;
+  let inIntro = false;
+  let practiceMode = false;
+  let gameTime = 0;                  // frames during actual gameplay
+  let pendingScore = null;           // score awaiting leaderboard save
 
   // Hidden comfort toggle — looks like a vibe button
   const cozyBtn = document.getElementById('cozyBtn');
@@ -240,6 +447,41 @@
   let player, platforms, trees, loggers, wasps, bananas, axes, particles, pickups, goal;
   let message, gameOver, win, score, maxHeight;
 
+  function buildPracticePlatforms() {
+    // Custom practice arena — each tier highlights a different ability
+    return [
+      // Ground
+      { x: 0, y: GROUND_Y, w: WORLD_W, h: 60 },
+      // ===== Tier A (y=2200): Banana target practice — small ledges to stand on while aiming =====
+      { x: 60,  y: 2200, w: 120, h: 14 },
+      { x: 720, y: 2200, w: 120, h: 14 },
+      // ===== Tier B (y=2000): Glide practice — single launch ledge + wide gap to long landing ledge =====
+      { x: 80,  y: 2000, w: 100, h: 14 },
+      { x: 620, y: 2000, w: 200, h: 14 },
+      // ===== Tier C (y=1800): Dash practice — chain of short narrow ledges =====
+      { x: 100, y: 1800, w: 60, h: 14 },
+      { x: 230, y: 1800, w: 60, h: 14 },
+      { x: 360, y: 1800, w: 60, h: 14 },
+      { x: 490, y: 1800, w: 60, h: 14 },
+      { x: 620, y: 1800, w: 60, h: 14 },
+      { x: 750, y: 1800, w: 60, h: 14 },
+      // ===== Tier D (y=1580): Blink practice — pair of platforms with a chunky pillar between =====
+      { x: 80,  y: 1580, w: 140, h: 14 },
+      { x: 380, y: 1320, w: 30,  h: 280 }, // tall pillar (decorative obstacle — one-way so you can pass through, but visually breaks the path)
+      { x: 480, y: 1580, w: 140, h: 14 },
+      { x: 720, y: 1580, w: 120, h: 14 },
+      // ===== Tier E (y=1360): Teleport practice — far separation horizontally =====
+      { x: 50,  y: 1360, w: 100, h: 14 },
+      { x: 750, y: 1360, w: 100, h: 14 },
+      // ===== Tier F (y=1140): Combo platforms =====
+      { x: 200, y: 1140, w: 100, h: 14 },
+      { x: 420, y: 1140, w: 100, h: 14 },
+      { x: 640, y: 1140, w: 100, h: 14 },
+      // ===== Top sanctuary (y=900): goal banana sits here =====
+      { x: 350, y: 900,  w: 200, h: 18 },
+    ];
+  }
+
   function buildL5Platforms() {
     // L5 world is 6000 tall — sparse platforms throughout (flight makes them decorative)
     const arr = [{ x: 0, y: GROUND_Y, w: WORLD_W, h: 60 }];
@@ -295,9 +537,10 @@
       level = newLevel;
       bgCache = null;
     }
-    // Per-level world height — L5 is taller for the godly climb
-    WORLD_H = WORLD_H_BY_LEVEL[level] || 4000;
+    // Per-level world height — L5 is taller for the godly climb; practice has a compact map
+    WORLD_H = practiceMode ? 2400 : (WORLD_H_BY_LEVEL[level] || 4000);
     GROUND_Y = WORLD_H - 60;
+    if (practiceMode) bgCache = null; // rebuild bg at the new height
     glideEnabled = level >= 2;
     dashEnabled = level >= 3;
     blinkEnabled = level >= 4;
@@ -322,7 +565,7 @@
     cam.y = Math.max(0, Math.min(WORLD_H - VIEW_H,
       player.y + player.h/2 - VIEW_H * 0.62));
 
-    platforms = level === 5 ? buildL5Platforms() : [
+    platforms = practiceMode ? buildPracticePlatforms() : level === 5 ? buildL5Platforms() : [
       // Ground
       { x: 0, y: GROUND_Y, w: WORLD_W, h: 60 },
       // ===== Lower section (new) =====
@@ -395,13 +638,15 @@
     ];
 
     trees = [];
-    const treeXs = [120, 280, 460, 640, 800];
+    const treeXs = practiceMode ? [180, 420, 720] : [120, 280, 460, 640, 800];
     treeXs.forEach(x => {
       trees.push({ x, y: GROUND_Y, w: 28, h: 110, hp: 200, alive: true, sway: Math.random() * Math.PI * 2 });
     });
 
     loggers = [];
-    if (level === 1) {
+    if (practiceMode) {
+      // No loggers in practice — pure sandbox
+    } else if (level === 1) {
       spawnLogger(220, 1);
       spawnLogger(450, -1);
       spawnLogger(560, 1);
@@ -416,7 +661,22 @@
     // Level 5 — no loggers, you are GOD
 
     // Flying enemies — wasps on level 1, hawks on level 2 (different behavior + look)
-    if (level === 1) {
+    if (practiceMode) {
+      // Practice targets — stationary wasps that respawn after being defeated
+      const T = (cx, cy) =>
+        ({ cx, cy, range: 0, alive: true, hp: 1, t: 0, w: 30, h: 22,
+           x: cx - 15, y: cy - 11, type: 'wasp', practice: true, respawn: 0 });
+      wasps = [
+        // Banana target practice ledge — 3 stationary targets in a row at chest height
+        T(280, 2160),
+        T(450, 2140),
+        T(620, 2160),
+        // A few high-altitude targets near each ability section
+        T(450, 1740),    // dash row
+        T(280, 1520),    // blink row
+        T(450, 1300),    // teleport row
+      ];
+    } else if (level === 1) {
       wasps = [
         { cx: 420, cy: 3700, range: 110, alive: true, hp: 1, t: 0.0, w: 30, h: 22, type: 'wasp' },
         { cx: 600, cy: 3500, range: 120, alive: true, hp: 1, t: 1.0, w: 30, h: 22, type: 'wasp' },
@@ -570,7 +830,9 @@
     ];
 
     // Golden banana at the top — touching it = victory
-    goal = { x: 430, y: 150, w: 40, h: 50, t: 0, taken: false };
+    goal = practiceMode
+      ? { x: 430, y: 850, w: 40, h: 50, t: 0, taken: false }
+      : { x: 430, y: 150, w: 40, h: 50, t: 0, taken: false };
 
     // Ensure every wasp/enemy has a valid x,y on spawn so render never sees NaN
     // (update normally sets these each frame, but on the level-transition frame
@@ -620,14 +882,28 @@
     if (levelTransition > 0) {
       levelTransition--;
       if (levelTransition === 0) {
-        const savedScore = score;
-        resetGame(levelTransitionNext);
-        score = savedScore;
-        updateHud();
+        if (inIntro) {
+          // Intro animation done — game is already set up at L1, just unfreeze
+          inIntro = false;
+          message = null;
+        } else if (levelTransitionNext > 0) {
+          const savedScore = score;
+          resetGame(levelTransitionNext);
+          score = savedScore;
+          updateHud();
+        } else {
+          // Final L5 rampage complete — flip to game-over screen
+          gameOver = true;
+          win = true;
+          message = "JUNGLE GOD";
+        }
       }
       return;
     }
     if (gameOver) return;
+
+    // Track game time during active gameplay (excludes transitions/menus)
+    if (!practiceMode) gameTime++;
 
     // Input timers
     if (player.jumpBuffer > 0) player.jumpBuffer--;
@@ -764,7 +1040,11 @@
         player.y < goal.y + goal.h && player.y + player.h > goal.y) {
       goal.taken = true;
       score += 500;
-      if (level === 1) {
+      if (practiceMode) {
+        // Practice mode — show a small message but don't transition
+        message = "🏆 Practice goal reached! Keep playing or use the menu.";
+        setTimeout(() => { if (practiceMode) { message = null; goal.taken = false; } }, 2500);
+      } else if (level === 1) {
         message = "Climbing to the peak...";
         win = true;
         levelTransition = 210;
@@ -785,13 +1065,16 @@
       } else if (level === 4) {
         message = "ASCENDING to godhood...";
         win = true;
-        levelTransition = 240;
-        levelTransitionMax = 240;
+        levelTransition = 420;
+        levelTransitionMax = 420;
         levelTransitionNext = 5;
       } else {
-        gameOver = true;
+        // L5 final: trigger the rampage scene, then game over
+        message = "VENGEANCE COMPLETE!";
         win = true;
-        message = "VENGEANCE COMPLETE. You are the JUNGLE GOD. ⚡🐵👑⚡";
+        levelTransition = 480;
+        levelTransitionMax = 480;
+        levelTransitionNext = 0; // 0 = final, set gameOver after the animation
       }
     }
 
@@ -879,8 +1162,26 @@
 
     // Flying enemies (wasps or hawks)
     for (const w of wasps) {
-      if (!w.alive) continue;
-      if (w.type === 'hawk') {
+      if (!w.alive) {
+        // Practice targets respawn after 2s so you can keep shooting
+        if (w.practice) {
+          w.respawn = (w.respawn || 0) + 1;
+          if (w.respawn > 120) {
+            w.alive = true;
+            w.hp = 1;
+            w.respawn = 0;
+            w.x = w.cx - w.w/2;
+            w.y = w.cy - w.h/2;
+          }
+        }
+        continue;
+      }
+      if (w.practice) {
+        // Stationary target — just animate t for the wing flap
+        w.t += 0.04;
+        w.x = w.cx - w.w/2;
+        w.y = w.cy - w.h/2;
+      } else if (w.type === 'hawk') {
         // Hawk — patrols, then dive-bombs the player
         if (w.swoopT > 0) {
           // Active swoop: rapid pursuit
@@ -1023,15 +1324,20 @@
     // Trees sway
     for (const t of trees) t.sway += 0.04;
 
-    // Lose if all trees are chopped down
+    // Lose if all trees are chopped down (skipped in practice mode)
     const aliveTrees = trees.filter(t => t.alive).length;
-    if (aliveTrees === 0) { gameOver = true; win = false; message = "The jungle is gone... 🌲💀"; }
+    if (!practiceMode && aliveTrees === 0) { gameOver = true; win = false; message = "The jungle is gone... 🌲💀"; }
 
     updateHud();
   }
 
   function hurtPlayer(n) {
     if (player.invuln > 0) return;
+    if (practiceMode) {
+      // Practice mode — player can't die, just brief invuln
+      player.invuln = 30;
+      return;
+    }
     if (babyMode && Math.random() < 0.88) {
       // Quietly absorb most hits without showing damage
       player.invuln = 40;
@@ -2747,11 +3053,81 @@
         const wob = Math.sin(gt*5 + i*1.3) * 4;
         const x0 = cx + Math.cos(a) * r0, y0 = cy + 2 + Math.sin(a) * r0;
         const xm = cx + Math.cos(a) * mid + Math.cos(a + Math.PI/2) * wob;
-        const ym = cy + 2 + Math.sin(a) * mid + Math.sin(a + Math.PI/2) * wob;
+        const ym = cy + Math.sin(a) * mid + Math.sin(a + Math.PI/2) * wob;
         const x1 = cx + Math.cos(a) * r1, y1 = cy + 2 + Math.sin(a) * r1;
         ctx.beginPath();
         ctx.moveTo(x0, y0); ctx.lineTo(xm, ym); ctx.lineTo(x1, y1);
         ctx.stroke();
+      }
+    }
+
+    // L3 — volcanic flame aura: orbiting fire tongues + rising ember sparks
+    if (level === 3) {
+      const ft = Date.now() / 130;
+      const numFlames = 6;
+      for (let i = 0; i < numFlames; i++) {
+        const a = (i / numFlames) * Math.PI * 2 + ft * 0.5;
+        const r = 42 + Math.sin(ft * 2 + i) * 3;
+        const fx = cx + Math.cos(a) * r;
+        const fy = cy + 2 + Math.sin(a) * r * 0.6;
+        const flick = 0.7 + 0.3 * Math.sin(ft * 5 + i * 2.1);
+        // Outer warm glow
+        ctx.fillStyle = `rgba(255, 100, 20, ${0.55 * flick})`;
+        ctx.beginPath(); ctx.arc(fx, fy, 14 * flick, 0, Math.PI*2); ctx.fill();
+        // Flame body (drop-shape: large bottom, pointed top)
+        ctx.fillStyle = `rgba(255, 140, 30, ${0.9 * flick})`;
+        const fh = 12 * flick;
+        ctx.beginPath();
+        ctx.moveTo(fx, fy - fh);
+        ctx.quadraticCurveTo(fx + 6, fy - 2, fx + 5, fy + 5);
+        ctx.quadraticCurveTo(fx, fy + 8, fx - 5, fy + 5);
+        ctx.quadraticCurveTo(fx - 6, fy - 2, fx, fy - fh);
+        ctx.fill();
+        // Bright inner core
+        ctx.fillStyle = `rgba(255, 230, 80, ${flick})`;
+        ctx.beginPath(); ctx.arc(fx, fy + 1, 3.2 * flick, 0, Math.PI*2); ctx.fill();
+      }
+      // Rising ember sparks above the monkey
+      for (let i = 0; i < 5; i++) {
+        const ea = (i / 5) * Math.PI * 2 + ft * 0.7;
+        const eDist = 24 + (Math.sin(ft * 3 + i * 1.7) * 8);
+        const ex = cx + Math.cos(ea) * eDist;
+        const ey = cy - 28 + Math.sin(ft * 2 + i) * 16;
+        const eAlpha = 0.6 + 0.4 * Math.sin(ft * 4 + i);
+        ctx.fillStyle = `rgba(255, ${180 + 60 * eAlpha}, 40, ${0.85 * eAlpha})`;
+        ctx.beginPath(); ctx.arc(ex, ey, 2.4, 0, Math.PI*2); ctx.fill();
+      }
+    }
+
+    // L4 — twilight mystical aura: orbiting purple wisps + drifting sparkles
+    if (level === 4) {
+      const mt = Date.now() / 180;
+      const numOrbs = 7;
+      for (let i = 0; i < numOrbs; i++) {
+        const a = (i / numOrbs) * Math.PI * 2 + mt * 0.35;
+        const r = 44 + Math.sin(mt * 1.4 + i * 0.7) * 5;
+        const ox = cx + Math.cos(a) * r;
+        const oy = cy + 2 + Math.sin(a) * r * 0.6;
+        const pulse = 0.6 + 0.4 * Math.sin(mt * 2.5 + i * 1.5);
+        // Outer purple glow
+        ctx.fillStyle = `rgba(180, 100, 255, ${0.5 * pulse})`;
+        ctx.beginPath(); ctx.arc(ox, oy, 13 * pulse, 0, Math.PI*2); ctx.fill();
+        // Mid layer
+        ctx.fillStyle = `rgba(220, 160, 255, ${0.8 * pulse})`;
+        ctx.beginPath(); ctx.arc(ox, oy, 6 * pulse, 0, Math.PI*2); ctx.fill();
+        // Bright lavender core
+        ctx.fillStyle = `rgba(245, 220, 255, ${pulse})`;
+        ctx.beginPath(); ctx.arc(ox, oy, 2.8, 0, Math.PI*2); ctx.fill();
+      }
+      // Drifting magical sparkles (counter-orbit)
+      for (let i = 0; i < 6; i++) {
+        const sa = (i / 6) * Math.PI * 2 - mt * 0.8;
+        const sDist = 56 + Math.sin(mt * 2 + i * 2) * 6;
+        const sx = cx + Math.cos(sa) * sDist;
+        const sy = cy + 2 + Math.sin(sa) * sDist * 0.55;
+        const sAlpha = 0.55 + 0.45 * Math.sin(mt * 5 + i * 1.3);
+        ctx.fillStyle = `rgba(255, 240, 200, ${0.85 * sAlpha})`;
+        ctx.fillRect(sx - 1.5, sy - 1.5, 3, 3);
       }
     }
     // Blink afterimage flash — bright purple aftereffect right after teleport
@@ -4507,12 +4883,1033 @@
     5: { color: '#ffd54f', bg: '#3a2a08', name: 'ASCENDED REALM',   icon: '⚡' },
   };
 
+  // ===== Pre-game intro: "The day the loggers came" =====
+  function lerpColor(c1, c2, t) {
+    const r1 = parseInt(c1.slice(1,3),16), g1 = parseInt(c1.slice(3,5),16), b1 = parseInt(c1.slice(5,7),16);
+    const r2 = parseInt(c2.slice(1,3),16), g2 = parseInt(c2.slice(3,5),16), b2 = parseInt(c2.slice(5,7),16);
+    return `rgb(${Math.round(r1+(r2-r1)*t)},${Math.round(g1+(g2-g1)*t)},${Math.round(b1+(b2-b1)*t)})`;
+  }
+
+  function drawIntroTree(x, groundY) {
+    // Pixel-chunky leafy tree
+    ctx.fillStyle = '#5d3a1c';
+    ctx.fillRect(x - 6, groundY - 60, 12, 60);
+    ctx.fillStyle = '#3d2515';
+    ctx.fillRect(x - 6, groundY - 60, 12, 4);
+    ctx.fillStyle = '#2e7d32';
+    ctx.fillRect(x - 36, groundY - 90, 72, 30);
+    ctx.fillRect(x - 30, groundY - 102, 60, 14);
+    ctx.fillRect(x - 22, groundY - 110, 44, 10);
+    ctx.fillRect(x - 14, groundY - 118, 28, 10);
+    ctx.fillStyle = '#4caf50';
+    ctx.fillRect(x - 30, groundY - 85, 14, 14);
+    ctx.fillRect(x + 4, groundY - 100, 14, 14);
+    ctx.fillRect(x - 8, groundY - 112, 14, 8);
+    ctx.fillStyle = '#1b5e20';
+    ctx.fillRect(x - 36, groundY - 64, 8, 6);
+    ctx.fillRect(x + 28, groundY - 64, 8, 6);
+  }
+
+  function drawIntroStump(x, groundY) {
+    ctx.fillStyle = '#5d3a1c';
+    ctx.fillRect(x - 8, groundY - 14, 16, 14);
+    ctx.fillStyle = '#a17350';
+    ctx.fillRect(x - 8, groundY - 14, 16, 5);
+    ctx.strokeStyle = '#6d4423'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.ellipse(x, groundY - 12, 5, 1.4, 0, 0, Math.PI*2); ctx.stroke();
+    ctx.beginPath(); ctx.ellipse(x, groundY - 12, 2.5, 0.8, 0, 0, Math.PI*2); ctx.stroke();
+  }
+
+  function drawFallingTrunk(x, groundY, fp, dir) {
+    ctx.save();
+    ctx.translate(x, groundY - 14);
+    ctx.rotate((fp * Math.PI / 2) * dir);
+    ctx.fillStyle = '#5d3a1c';
+    ctx.fillRect(-6, -60, 12, 60);
+    ctx.fillStyle = '#3d2515';
+    ctx.fillRect(-6, -60, 12, 4);
+    // Smaller crashed leaves
+    ctx.fillStyle = '#2e7d32';
+    ctx.fillRect(-28, -88, 56, 22);
+    ctx.fillRect(-22, -98, 44, 10);
+    ctx.fillStyle = '#4caf50';
+    ctx.fillRect(-20, -83, 12, 12);
+    ctx.fillRect(6, -94, 12, 12);
+    ctx.restore();
+  }
+
+  function drawIntroLogger(x, groundY, axeAngle, alpha) {
+    ctx.save();
+    if (alpha !== undefined) ctx.globalAlpha = alpha;
+    ctx.imageSmoothingEnabled = false;
+    const top = groundY - 64;
+    // Hardhat
+    ctx.fillStyle = '#fbc02d';
+    ctx.fillRect(x - 14, top, 28, 6);
+    ctx.fillRect(x - 11, top - 5, 22, 5);
+    // Face
+    ctx.fillStyle = '#f5d6b3';
+    ctx.fillRect(x - 10, top + 6, 20, 12);
+    // Eyes
+    ctx.fillStyle = '#000';
+    ctx.fillRect(x - 6, top + 10, 3, 3);
+    ctx.fillRect(x + 3, top + 10, 3, 3);
+    // Beard
+    ctx.fillStyle = '#5d4037';
+    ctx.fillRect(x - 8, top + 16, 16, 4);
+    // Plaid shirt
+    ctx.fillStyle = '#b71c1c';
+    ctx.fillRect(x - 12, top + 20, 24, 18);
+    ctx.fillStyle = '#7f0000';
+    ctx.fillRect(x - 12, top + 26, 24, 2);
+    ctx.fillRect(x - 6, top + 20, 2, 18);
+    ctx.fillRect(x + 4, top + 20, 2, 18);
+    // Legs
+    ctx.fillStyle = '#3e2723';
+    ctx.fillRect(x - 10, top + 38, 8, 14);
+    ctx.fillRect(x + 2, top + 38, 8, 14);
+    // Axe
+    ctx.save();
+    ctx.translate(x + 10, top + 28);
+    ctx.rotate(axeAngle);
+    ctx.fillStyle = '#6d4c2a';
+    ctx.fillRect(0, -2, 26, 4);
+    ctx.fillStyle = '#bdbdbd';
+    ctx.beginPath();
+    ctx.moveTo(22, -10); ctx.lineTo(32, -6); ctx.lineTo(32, 6); ctx.lineTo(22, 10);
+    ctx.closePath(); ctx.fill();
+    ctx.strokeStyle = '#555'; ctx.lineWidth = 1; ctx.stroke();
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(23, -8, 2, 2);
+    ctx.restore();
+    ctx.restore();
+  }
+
+  function drawIntroMonkey(x, y, state, t) {
+    ctx.save();
+    ctx.imageSmoothingEnabled = false;
+    const bob = state === 'happy' ? Math.floor(Math.sin(t * 80) * 3) : 0;
+    const yPos = y + bob;
+    // Tail
+    ctx.fillStyle = '#5d3a1c';
+    ctx.fillRect(x - 18, yPos + 4, 6, 3);
+    ctx.fillRect(x - 22, yPos, 6, 4);
+    ctx.fillRect(x - 22, yPos - 6, 4, 6);
+    // Body
+    ctx.fillStyle = '#7a4a22';
+    ctx.fillRect(x - 14, yPos + 5, 28, 22);
+    ctx.fillStyle = '#d9b48a';
+    ctx.fillRect(x - 9, yPos + 9, 18, 16);
+    // Head
+    ctx.fillStyle = '#7a4a22';
+    ctx.fillRect(x - 14, yPos - 12, 28, 22);
+    ctx.fillStyle = '#d9b48a';
+    ctx.fillRect(x - 10, yPos - 8, 20, 16);
+    // Ears
+    ctx.fillStyle = '#7a4a22';
+    ctx.fillRect(x - 16, yPos - 10, 4, 6);
+    ctx.fillRect(x + 12, yPos - 10, 4, 6);
+    // Eyes by state
+    if (state === 'sad') {
+      ctx.fillStyle = '#000';
+      ctx.fillRect(x - 6, yPos - 4, 3, 1);
+      ctx.fillRect(x + 3, yPos - 4, 3, 1);
+      // Tear
+      ctx.fillStyle = '#4fc3f7';
+      ctx.fillRect(x - 5, yPos - 2, 2, 5);
+      ctx.fillStyle = '#81d4fa';
+      ctx.fillRect(x - 5, yPos + 3, 2, 2);
+    } else if (state === 'determined') {
+      ctx.fillStyle = '#000';
+      ctx.fillRect(x - 6, yPos - 4, 4, 2);
+      ctx.fillRect(x + 2, yPos - 4, 4, 2);
+      ctx.fillStyle = '#3d2515';
+      ctx.fillRect(x - 7, yPos - 7, 5, 1);
+      ctx.fillRect(x + 2, yPos - 7, 5, 1);
+    } else if (state === 'worried') {
+      ctx.fillStyle = '#000';
+      ctx.fillRect(x - 5, yPos - 4, 3, 3);
+      ctx.fillRect(x + 2, yPos - 4, 3, 3);
+      // Worried brow
+      ctx.fillStyle = '#3d2515';
+      ctx.fillRect(x - 6, yPos - 8, 4, 1);
+      ctx.fillRect(x + 2, yPos - 8, 4, 1);
+    } else {
+      ctx.fillStyle = '#000';
+      ctx.fillRect(x - 5, yPos - 4, 3, 3);
+      ctx.fillRect(x + 2, yPos - 4, 3, 3);
+    }
+    // Mouth by state
+    ctx.fillStyle = '#3d2515';
+    if (state === 'happy') {
+      ctx.fillRect(x - 3, yPos + 4, 6, 1);
+      ctx.fillRect(x - 4, yPos + 3, 1, 1);
+      ctx.fillRect(x + 3, yPos + 3, 1, 1);
+    } else if (state === 'worried') {
+      ctx.fillStyle = '#1a0f0a';
+      ctx.fillRect(x - 1, yPos + 3, 3, 3);
+    } else if (state === 'sad') {
+      ctx.fillRect(x - 3, yPos + 5, 6, 1);
+      ctx.fillRect(x - 4, yPos + 6, 1, 1);
+      ctx.fillRect(x + 3, yPos + 6, 1, 1);
+    } else if (state === 'determined') {
+      ctx.fillRect(x - 4, yPos + 4, 8, 1);
+    }
+    // Arms by state
+    ctx.fillStyle = '#7a4a22';
+    if (state === 'determined') {
+      // Raised fist
+      ctx.fillRect(x + 12, yPos - 4, 6, 18);
+      ctx.fillRect(x + 14, yPos - 12, 8, 8);
+      ctx.fillStyle = '#d9b48a';
+      ctx.fillRect(x + 14, yPos - 12, 8, 4);
+    } else if (state === 'sad') {
+      // Arms dangling, slumped
+      ctx.fillRect(x - 18, yPos + 6, 6, 18);
+      ctx.fillRect(x + 12, yPos + 6, 6, 18);
+    } else {
+      ctx.fillRect(x - 18, yPos + 5, 6, 14);
+      ctx.fillRect(x + 12, yPos + 5, 6, 14);
+    }
+    // Legs
+    ctx.fillStyle = '#7a4a22';
+    ctx.fillRect(x - 7, yPos + 26, 5, 8);
+    ctx.fillRect(x + 2, yPos + 26, 5, 8);
+    ctx.restore();
+  }
+
+  function drawIntroScene(progress) {
+    ctx.imageSmoothingEnabled = false;
+    const groundY = VIEW_H - 110;
+    const dim = Math.max(0, Math.min(1, (progress - 0.50) / 0.30));
+
+    // Sky — bright happy → dim somber
+    const sky = ctx.createLinearGradient(0, 0, 0, VIEW_H);
+    sky.addColorStop(0,    lerpColor('#5fb3e6', '#2a2840', dim));
+    sky.addColorStop(0.55, lerpColor('#a8d4ed', '#4a3a55', dim));
+    sky.addColorStop(1,    lerpColor('#ffd093', '#5d4570', dim));
+    ctx.fillStyle = sky;
+    ctx.fillRect(0, 0, VIEW_W, VIEW_H);
+
+    // Sun (fades and lowers)
+    const sunX = 130, sunY = 90 + dim * 40;
+    const sunA = 1 - dim * 0.7;
+    ctx.fillStyle = `rgba(255, 224, 130, ${sunA})`;
+    ctx.fillRect(sunX, sunY, 44, 44);
+    ctx.fillStyle = `rgba(255, 245, 157, ${sunA})`;
+    ctx.fillRect(sunX + 6, sunY + 6, 32, 32);
+    // Sun rays
+    ctx.fillStyle = `rgba(255, 235, 80, ${sunA * 0.7})`;
+    for (const [dx, dy] of [[-18, 18], [-18, -10], [56, 18], [56, -10], [18, -22], [18, 62]]) {
+      ctx.fillRect(sunX + dx, sunY + dy, 14, 6);
+    }
+
+    // Distant pixel hills
+    ctx.fillStyle = lerpColor('#4a7c3a', '#2a2832', dim);
+    for (let i = 0; i < 5; i++) {
+      const hx = i * 210 - 50;
+      ctx.fillRect(hx, VIEW_H - 220, 250, 50);
+      ctx.fillRect(hx + 30, VIEW_H - 240, 190, 25);
+    }
+
+    // Tiny birds (only first 20%)
+    if (progress < 0.25) {
+      ctx.strokeStyle = lerpColor('#2a2025', '#1a1a25', dim);
+      ctx.lineWidth = 1.5;
+      for (let i = 0; i < 3; i++) {
+        const bx = 400 + i * 80 + Math.sin(progress * 20 + i) * 30;
+        const by = 180 + Math.sin(progress * 30 + i * 2) * 8;
+        ctx.beginPath();
+        ctx.moveTo(bx, by);
+        ctx.lineTo(bx + 5, by - 4);
+        ctx.lineTo(bx + 10, by);
+        ctx.stroke();
+      }
+    }
+
+    // Ground (grass dims)
+    ctx.fillStyle = lerpColor('#7fc54a', '#3a3528', dim);
+    ctx.fillRect(0, groundY, VIEW_W, VIEW_H - groundY);
+    ctx.fillStyle = lerpColor('#558b2f', '#28201c', dim);
+    ctx.fillRect(0, groundY, VIEW_W, 8);
+    // Grass tufts
+    ctx.fillStyle = lerpColor('#aed581', '#4a4030', dim);
+    for (let i = 0; i < VIEW_W; i += 22) {
+      ctx.fillRect(i + ((i*7)%8), groundY - 4, 8, 4);
+    }
+
+    // ===== Trees =====
+    const trees = [
+      { x: 130, fallAt: 0.36, dir: -1 },
+      { x: 290, fallAt: 0.43, dir:  1 },
+      { x: 440, fallAt: 0.50, dir: -1 },
+      { x: 580, fallAt: 0.56, dir:  1 },
+      { x: 720, fallAt: 0.62, dir: -1 },
+    ];
+
+    for (const t of trees) {
+      const fallen = progress >= t.fallAt;
+      const chopping = progress > t.fallAt - 0.07 && !fallen;
+      if (fallen) {
+        drawIntroStump(t.x, groundY);
+        const fp = Math.min(1, (progress - t.fallAt) / 0.05);
+        if (fp < 1) drawFallingTrunk(t.x, groundY, fp, t.dir);
+        // Wood chips burst at moment of fall
+        if (fp < 0.4) {
+          ctx.fillStyle = '#a17350';
+          for (let c = 0; c < 8; c++) {
+            const a = (c / 8) * Math.PI * 2;
+            const r = fp * 60;
+            const px = t.x + Math.cos(a) * r;
+            const py = groundY - 12 + Math.sin(a) * r * 0.5;
+            ctx.fillRect(Math.floor(px), Math.floor(py), 5, 5);
+          }
+        }
+        // "TIMBER!" briefly
+        if (fp < 0.5) {
+          const ta = 1 - fp * 2;
+          ctx.fillStyle = `rgba(80, 30, 0, ${ta})`;
+          ctx.font = 'bold 30px monospace';
+          ctx.textAlign = 'center';
+          ctx.fillText('TIMBER!', t.x + 3, groundY - 140 + 3);
+          ctx.fillStyle = `rgba(255, 80, 80, ${ta})`;
+          ctx.fillText('TIMBER!', t.x, groundY - 140);
+        }
+      } else {
+        const shake = chopping ? Math.floor(Math.sin(progress * 280) * 3) : 0;
+        drawIntroTree(t.x + shake, groundY);
+        // Wood chips falling near base while chopping
+        if (chopping) {
+          ctx.fillStyle = '#a17350';
+          for (let c = 0; c < 3; c++) {
+            const cx2 = t.x + Math.sin(progress * 150 + c) * 18;
+            const cy2 = groundY - 24 + ((progress * 200 + c * 7) % 16);
+            ctx.fillRect(Math.floor(cx2), Math.floor(cy2), 4, 4);
+          }
+          // CHOP! text bursts
+          if (Math.floor(progress * 100) % 2 === 0) {
+            ctx.fillStyle = 'rgba(255, 255, 200, 0.85)';
+            ctx.font = 'bold 14px monospace';
+            ctx.textAlign = 'center';
+            ctx.fillText('CHOP!', t.x + 30, groundY - 50);
+          }
+        }
+      }
+    }
+
+    // ===== Loggers (3 of them, each marches to a tree and chops) =====
+    const loggers = [
+      { startTime: 0.15, target: trees[0].x + 32 },
+      { startTime: 0.17, target: trees[2].x + 32 },
+      { startTime: 0.19, target: trees[4].x + 32 },
+    ];
+    for (const l of loggers) {
+      if (progress < l.startTime) continue;
+      const walkP = Math.min(1, (progress - l.startTime) / 0.10);
+      const startX = VIEW_W + 80;
+      const lx = startX + (l.target - startX) * walkP;
+      // Axe swing during chopping phase
+      let axeAngle = -0.3;
+      if (walkP > 0.95 && progress > 0.27) {
+        const swing = Math.sin(progress * 35);
+        axeAngle = swing > 0 ? -0.3 - swing * 0.6 : -0.3 + swing * 0.4;
+      }
+      drawIntroLogger(lx, groundY, axeAngle);
+    }
+
+    // ===== Monkey =====
+    let mx, my, state;
+    if (progress < 0.20) {
+      mx = trees[0].x + 8; my = trees[0].x ? groundY - 95 : groundY - 50;
+      my = groundY - 95;
+      state = 'happy';
+    } else if (progress < 0.30) {
+      mx = trees[0].x + 8; my = groundY - 95; state = 'worried';
+    } else if (progress < 0.36) {
+      // jumping to tree 2
+      const jp = (progress - 0.30) / 0.06;
+      mx = trees[0].x + (trees[1].x - trees[0].x) * jp;
+      my = groundY - 95 - Math.sin(jp * Math.PI) * 30;
+      state = 'worried';
+    } else if (progress < 0.43) {
+      mx = trees[1].x + 8; my = groundY - 95; state = 'worried';
+    } else if (progress < 0.50) {
+      mx = trees[2].x + 8; my = groundY - 95; state = 'worried';
+    } else if (progress < 0.56) {
+      mx = trees[3].x + 8; my = groundY - 95; state = 'worried';
+    } else if (progress < 0.62) {
+      mx = trees[4].x + 8; my = groundY - 95; state = 'worried';
+    } else if (progress < 0.66) {
+      // jumping down from last tree
+      const jp = (progress - 0.62) / 0.04;
+      mx = trees[4].x - 80 * jp;
+      my = (groundY - 95) + (groundY - 50 - (groundY - 95)) * jp;
+      state = 'worried';
+    } else if (progress < 0.86) {
+      mx = 250; my = groundY - 50; state = 'sad';
+    } else {
+      mx = 250; my = groundY - 50; state = 'determined';
+    }
+    drawIntroMonkey(mx, my, state, progress * 60);
+
+    // ===== Text overlays =====
+    const TEXTS = [
+      { s: 0.03, e: 0.15, t: 'Long ago, in a peaceful jungle...' },
+      { s: 0.16, e: 0.24, t: '...until THEY came.' },
+      { s: 0.68, e: 0.82, t: 'Everything he loved... gone.' },
+      { s: 0.86, e: 0.96, t: 'But the fight had only begun.' },
+    ];
+    for (const T of TEXTS) {
+      if (progress < T.s || progress > T.e) continue;
+      const lp = (progress - T.s) / (T.e - T.s);
+      const a = lp < 0.15 ? lp / 0.15 : (lp > 0.85 ? (1 - lp) / 0.15 : 1);
+      ctx.fillStyle = `rgba(0, 0, 0, ${0.65 * a})`;
+      ctx.fillRect(VIEW_W * 0.08, VIEW_H - 70, VIEW_W * 0.84, 42);
+      ctx.fillStyle = `rgba(255, 230, 130, ${a})`;
+      ctx.font = 'bold 22px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText(T.t, VIEW_W / 2, VIEW_H - 44);
+    }
+
+    // Fade to L1
+    if (progress > 0.96) {
+      const fp = (progress - 0.96) / 0.04;
+      ctx.fillStyle = `rgba(0, 0, 0, ${fp})`;
+      ctx.fillRect(0, 0, VIEW_W, VIEW_H);
+    }
+  }
+
+  // ===== Pixel-art death-and-ascension scene (L4 → L5) =====
+  const PIX_MONKEY = [
+    '.....AAAAA.....',
+    '...AABBBBBAA...',
+    '..ABBCCCCCBBA..',
+    '..ABCCCDDDCCBA.',  // hair tuft
+    '..ABCEEFCEEFBA.',  // ears
+    '..ABCCDDDDDCCA.',  // eyes (D)
+    '..ABCCMMMMMCCA.',  // mouth area
+    '..ABCCCCCCCCBA.',
+    '...AABBBBBAA...',
+    '....AHHHHHA....',  // body
+    '...AHIIIIIHA...',  // belly
+    '...AHIIIIIHA...',
+    '...AHIIIIIHA...',
+    '....AHHHHHA....',
+    '....A.....A....',  // legs
+  ];
+  const PAL_MONKEY = {
+    A: '#3d2515', B: '#5d3a1c', C: '#e8c694', D: '#000',
+    E: '#7a4a22', F: '#f4b97a', H: '#7a4a22', I: '#d9b48a',
+    M: '#3d2515',
+  };
+  const PIX_MONKEY_DEAD = [
+    '.AAAAAAA.',
+    'ABCCCDCCB',   // X eye left + dot
+    'ABCDCDCCB',   // X eye right
+    'ABCCCCCCB',
+    'AHHHHHHHA',   // body laying down
+    'AHIIIIIHA',
+    'AHHHHHHHA',
+  ];
+  const PIX_HUNTER = [
+    '..........YYYYY.....',
+    '.........YYYYYYY....',
+    '.........YYYYYYY....',
+    '..........FFFFF.....',
+    '..........FFDFF.....',  // single eye visible (facing left)
+    '..........FFFFF.....',
+    'GGGGGGGGGGRRRRRR....',  // gun + shirt
+    'GGGGGGGGGGRRRRRR....',  // 2nd row of gun
+    '..........RRRRRR....',
+    '..........RRRRRR....',
+    '..........KKKK......',  // pants
+    '..........KKKK......',
+    '..........K..K......',
+  ];
+  const PAL_HUNTER = {
+    Y: '#fbc02d', F: '#f5d6b3', D: '#000',
+    R: '#b71c1c', G: '#455a64', K: '#3e2723',
+  };
+  const PIX_GHOST = [
+    '...WWW...',
+    '..WWWWW..',
+    '.WWDWDWW.',  // ghost eyes
+    '.WWWWWWW.',
+    '.WWWWWWW.',
+    '.WWWWWWW.',
+    '.W.W.W.W.',  // wavy bottom
+  ];
+  const PAL_GHOST = (alpha) => ({
+    W: `rgba(240, 250, 255, ${alpha * 0.85})`,
+    D: `rgba(80, 120, 180, ${alpha})`,
+  });
+  const PIX_FLASH = [
+    '....Y..Y....',
+    '..YYWWWWYY..',
+    '.YWWOOOOWWY.',
+    'YWWOOXXOOWWY',
+    'YWWOXXXXOWWY',
+    'YWWOOXXOOWWY',
+    '.YWWOOOOWWY.',
+    '..YYWWWWYY..',
+    '....Y..Y....',
+  ];
+  const PAL_FLASH = { Y: '#ffeb3b', W: '#fff', O: '#ff6f00', X: '#d50000' };
+
+  function drawPixSprite(rows, x, y, scale, palette, alpha) {
+    if (alpha === undefined) alpha = 1;
+    if (alpha <= 0) return;
+    ctx.save();
+    ctx.imageSmoothingEnabled = false;
+    ctx.globalAlpha = alpha;
+    for (let r = 0; r < rows.length; r++) {
+      const row = rows[r];
+      for (let c = 0; c < row.length; c++) {
+        const v = row[c];
+        if (v === '.') continue;
+        const color = palette[v];
+        if (color) {
+          ctx.fillStyle = color;
+          ctx.fillRect(x + c * scale, y + r * scale, scale, scale);
+        }
+      }
+    }
+    ctx.restore();
+  }
+
+  // ===== Small enemy sprites for the L5 rampage scene =====
+  const RPX_WASP = [
+    '.YYY.',
+    'YKYKY',  // Y=yellow, K=black stripes
+    'YYYYY',
+    'KKYKK',
+    '..S..',  // S=stinger
+  ];
+  const RPAL_WASP = { Y: '#fbc02d', K: '#1a0f0f', S: '#000' };
+  const RPX_HAWK = [
+    '....BB....',
+    '...BFFB...',
+    'BBBBBBBBBB',  // wings
+    'BBBBBBBBBB',
+    'EBFFFFFFBE',  // E=eye, F=belly
+    '..BBBBBB..',
+  ];
+  const RPAL_HAWK = { B: '#5d3a1c', F: '#d7ccc8', E: '#ffd700' };
+  const RPX_BAT = [
+    'K....KK....K',
+    'KK..KKKK..KK',
+    'KKKKKKKKKKKK',  // wings spread
+    'KKKKRRRRKKKK',  // R=red eyes
+    '.KKKKKKKKKK.',
+    '..K..KK..K..',
+  ];
+  const RPAL_BAT = { K: '#0a0a0a', R: '#ff1744' };
+  const RPX_WISP = [
+    '..WWW..',
+    '.WWWWW.',
+    'WWDWDWW',  // D=dark eyes
+    'WWWWWWW',
+    'WWPPPWW',  // P=purple core
+    'WWWWWWW',
+    '.W.W.W.',
+  ];
+  const RPAL_WISP = { W: '#fdf6dd', D: '#311b92', P: '#9c27b0' };
+  const RPX_WARDEN = [
+    '..GGGG..',
+    '.GGGGGG.',  // G=gold helmet
+    '.FFFFFF.',  // F=face
+    'YGGGGGGY',  // Y=wings
+    'YGAAAAGY',  // A=armor
+    'YGGSSSGY',  // S=sun emblem
+    '.GG..GG.',
+    '.KK..KK.',  // K=feet
+  ];
+  const RPAL_WARDEN = { G: '#d4af37', F: '#f5d6b3', Y: '#fdf6dd', A: '#ffe082', S: '#fff8d0', K: '#7a5a00' };
+  const RPX_LOGGER = [
+    '.YYYYY.',  // Y=yellow hardhat
+    'YYYYYYY',
+    '.FFFFF.',  // F=face
+    '.FEEEF.',  // E=eyes
+    'RRRRRRR',  // R=red plaid
+    'RKRKRKR',  // K=plaid pattern
+    'RRRRRRR',
+    '.BB.BB.',  // B=brown pants
+    '.B...B.',
+  ];
+  const RPAL_LOGGER = { Y: '#fbc02d', F: '#f5d6b3', E: '#000', R: '#b71c1c', K: '#7f0000', B: '#3e2723' };
+  const RPX_BOOM = [
+    '.Y.YY.Y.',
+    'YOXXXXOY',  // O=orange, X=red, Y=yellow
+    'OWXXXXWO',  // W=white
+    'XWWXXWWX',
+    'OWXXXXWO',
+    'YOXXXXOY',
+    '.Y.YY.Y.',
+  ];
+  const RPAL_BOOM = { Y: '#ffeb3b', O: '#ff6f00', X: '#d50000', W: '#fff' };
+
+  function drawRampageScene(progress) {
+    ctx.imageSmoothingEnabled = false;
+
+    // Cosmic divine backdrop — golden top → purple → deep cosmic → gold floor
+    const sky = ctx.createLinearGradient(0, 0, 0, VIEW_H);
+    sky.addColorStop(0,    '#fff8d0');
+    sky.addColorStop(0.25, '#ffc107');
+    sky.addColorStop(0.55, '#4a2585');
+    sky.addColorStop(0.85, '#1a0a3a');
+    sky.addColorStop(1,    '#d4af37');
+    ctx.fillStyle = sky;
+    ctx.fillRect(0, 0, VIEW_W, VIEW_H);
+
+    // Twinkling pixel stars
+    for (let i = 0; i < 80; i++) {
+      const sx = Math.floor(((i * 73) % VIEW_W) / 4) * 4;
+      const sy = Math.floor(((i * 47) % VIEW_H) / 4) * 4;
+      const twink = (Math.floor(progress * 60) + i) % 7;
+      if (twink < 4) {
+        const sz = twink === 0 ? 4 : 2;
+        ctx.fillStyle = twink === 0 ? '#fff' : (twink === 1 ? '#fff8d0' : '#cee0ff');
+        ctx.fillRect(sx, sy, sz, sz);
+      }
+    }
+
+    // Monkey position (slightly above center)
+    const SCALE = 8;
+    const mW = PIX_MONKEY[0].length * SCALE;
+    const mH = PIX_MONKEY.length * SCALE;
+    const mcx = VIEW_W / 2;
+    const mcy = VIEW_H * 0.58;
+    const mX = mcx - mW/2;
+    const mY = mcy - mH/2;
+    const aT = progress * 60;
+
+    // Pulsing divine aura
+    const auraR = 130 + Math.sin(aT) * 18;
+    const aura = ctx.createRadialGradient(mcx, mcy, 0, mcx, mcy, auraR);
+    aura.addColorStop(0,   'rgba(255, 250, 200, 0.75)');
+    aura.addColorStop(0.5, 'rgba(255, 210, 90, 0.4)');
+    aura.addColorStop(1,   'rgba(255, 180, 60, 0)');
+    ctx.fillStyle = aura;
+    ctx.fillRect(0, 0, VIEW_W, VIEW_H);
+
+    // Draw god-monkey (sprite + crown + halo overlay)
+    drawPixSprite(PIX_MONKEY, mX, mY, SCALE, PAL_MONKEY);
+    // Crown band
+    ctx.fillStyle = '#d4af37';
+    ctx.fillRect(mX + mW * 0.22, mY - SCALE * 3, mW * 0.56, SCALE);
+    // Crown spikes
+    const csx = mX + mW * 0.22;
+    const csw = mW * 0.56;
+    for (let i = 0; i < 5; i++) {
+      const ix = csx + (i + 0.5) * (csw / 5);
+      ctx.fillStyle = '#d4af37';
+      ctx.fillRect(ix - SCALE/2, mY - SCALE * 5, SCALE, SCALE * 2);
+    }
+    // Crown gem
+    ctx.fillStyle = '#ff1744';
+    ctx.fillRect(mcx - SCALE/2, mY - SCALE * 2.6, SCALE, SCALE);
+    // Floating halo
+    ctx.strokeStyle = `rgba(255, 240, 130, ${0.75 + 0.25 * Math.sin(aT * 1.4)})`;
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.ellipse(mcx, mY - SCALE * 7.5, mW * 0.42, SCALE * 1.1, 0, 0, Math.PI*2);
+    ctx.stroke();
+    ctx.strokeStyle = 'rgba(255, 255, 220, 0.55)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.ellipse(mcx, mY - SCALE * 7.5, mW * 0.42, SCALE * 1.1, 0, 0, Math.PI*2);
+    ctx.stroke();
+
+    // Lightning bolt helper (for kill effect)
+    function lightningBolt(tx, ty) {
+      ctx.save();
+      ctx.strokeStyle = 'rgba(255, 240, 130, 0.7)';
+      ctx.lineWidth = 12;
+      ctx.beginPath();
+      ctx.moveTo(mcx, mcy);
+      ctx.lineTo(tx, ty);
+      ctx.stroke();
+      ctx.strokeStyle = '#fff';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(mcx, mcy);
+      const steps = 5;
+      for (let s = 1; s < steps; s++) {
+        const t = s / steps;
+        const wob = (Math.sin(s * 7.3 + aT * 4) * 14) * (s % 2 ? 1 : -1);
+        const nx = mcx + (tx - mcx) * t + wob;
+        const ny = mcy + (ty - mcy) * t + wob * 0.4;
+        ctx.lineTo(nx, ny);
+      }
+      ctx.lineTo(tx, ty);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    // ===== Enemy waves =====
+    // [start, end, sprite, palette, count, spawnSide, label]
+    const waves = [
+      [0.08, 0.21, RPX_WASP,   RPAL_WASP,   8, 'side',   'WASPS'],
+      [0.21, 0.34, RPX_HAWK,   RPAL_HAWK,   6, 'top',    'HAWKS'],
+      [0.34, 0.47, RPX_BAT,    RPAL_BAT,    8, 'ring',   'BATS'],
+      [0.47, 0.60, RPX_WISP,   RPAL_WISP,   6, 'top',    'WISPS'],
+      [0.60, 0.74, RPX_WARDEN, RPAL_WARDEN, 6, 'side',   'WARDENS'],
+      [0.74, 0.88, RPX_LOGGER, RPAL_LOGGER, 5, 'bottom', 'LUMBERJACKS'],
+    ];
+
+    for (const [start, end, sprite, pal, count, spawnSide, label] of waves) {
+      if (progress < start || progress >= end + 0.04) continue;
+      const local = Math.min(1.04, (progress - start) / (end - start));
+      const sW = sprite[0].length, sH = sprite.length;
+      const eScale = 5;
+
+      // Wave label fading in/out at start
+      if (local < 0.2) {
+        const labelA = Math.min(1, local / 0.1) * Math.max(0, 1 - (local - 0.1) / 0.1);
+        ctx.fillStyle = `rgba(0, 0, 0, ${labelA * 0.6})`;
+        ctx.font = 'bold 28px monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText(label, VIEW_W/2 + 2, 90 + 2);
+        ctx.fillStyle = `rgba(255, 80, 80, ${labelA})`;
+        ctx.fillText(label, VIEW_W/2, 90);
+      }
+
+      for (let i = 0; i < count; i++) {
+        // Spawn position based on side
+        let startX, startY;
+        if (spawnSide === 'side') {
+          startX = i % 2 === 0 ? -80 : VIEW_W + 80;
+          startY = 120 + (i / count) * (VIEW_H - 240);
+        } else if (spawnSide === 'top') {
+          startX = (i + 0.5) * (VIEW_W / count);
+          startY = -80;
+        } else if (spawnSide === 'bottom') {
+          startX = (i + 0.5) * (VIEW_W / count);
+          startY = VIEW_H + 80;
+        } else { // 'ring'
+          const a = (i / count) * Math.PI * 2;
+          startX = mcx + Math.cos(a) * 600;
+          startY = mcy + Math.sin(a) * 400;
+        }
+
+        // Target circle around monkey
+        const tAngle = (i / count) * Math.PI * 2 + 0.3;
+        const tRad = 170;
+        const targetX = mcx + Math.cos(tAngle) * tRad;
+        const targetY = mcy + Math.sin(tAngle) * tRad * 0.7 - 30;
+
+        // Fly-in: 0-30% of wave
+        const flyP = Math.min(1, local / 0.30);
+        const curX = startX + (targetX - startX) * flyP;
+        const curY = startY + (targetY - startY) * flyP;
+
+        // Kill schedule: 30-90% of wave
+        const killStart = 0.30 + (i / count) * 0.55;
+        const isDying = local >= killStart;
+        const justKilled = isDying && local < killStart + 0.04;
+
+        if (justKilled) lightningBolt(curX, curY);
+
+        if (!isDying) {
+          drawPixSprite(sprite, curX - sW * eScale / 2, curY - sH * eScale / 2, eScale, pal);
+        } else {
+          // Explosion
+          const expT = (local - killStart) / 0.15;
+          if (expT < 1) {
+            const expScale = 4 + Math.floor(expT * 5);
+            const ew = RPX_BOOM[0].length * expScale;
+            const eh = RPX_BOOM.length * expScale;
+            drawPixSprite(RPX_BOOM, curX - ew/2, curY - eh/2, expScale, RPAL_BOOM, 1 - expT * 0.6);
+            // Pixel fragments flying outward
+            for (let f = 0; f < 6; f++) {
+              const fa = (f / 6) * Math.PI * 2;
+              const fr = expT * 80;
+              const fx = curX + Math.cos(fa) * fr;
+              const fy = curY + Math.sin(fa) * fr;
+              ctx.fillStyle = `rgba(255, ${120 + (f*30) % 130}, 30, ${1 - expT})`;
+              ctx.fillRect(Math.floor(fx / 4) * 4, Math.floor(fy / 4) * 4, 6, 6);
+            }
+          }
+        }
+      }
+    }
+
+    // ===== Phase 8 (0.88 - 1.00): Victory flash + title =====
+    if (progress >= 0.88) {
+      const fp = (progress - 0.88) / 0.12;
+      const flashA = fp < 0.3 ? fp / 0.3 : 1 - (fp - 0.3) * 0.6;
+      ctx.fillStyle = `rgba(255, 250, 220, ${flashA * 0.9})`;
+      ctx.fillRect(0, 0, VIEW_W, VIEW_H);
+      if (fp > 0.2) {
+        const titleA = Math.min(1, (fp - 0.2) * 3);
+        // Big "JUNGLE GOD" title
+        ctx.font = 'bold 56px monospace';
+        ctx.textAlign = 'center';
+        ctx.fillStyle = `rgba(80, 50, 0, ${titleA})`;
+        ctx.fillText('JUNGLE GOD', VIEW_W/2 + 4, VIEW_H/2 - 14);
+        ctx.fillStyle = `rgba(255, 215, 80, ${titleA})`;
+        ctx.fillText('JUNGLE GOD', VIEW_W/2, VIEW_H/2 - 18);
+        // Subtitle
+        ctx.font = 'bold 26px monospace';
+        ctx.fillStyle = `rgba(180, 30, 30, ${titleA})`;
+        ctx.fillText('VENGEANCE COMPLETE', VIEW_W/2, VIEW_H/2 + 28);
+      }
+    }
+  }
+
+  function drawDeathAscensionScene(progress) {
+    ctx.imageSmoothingEnabled = false;
+
+    // Sky — vibrant pixelated jungle dusk
+    const sky = ctx.createLinearGradient(0, 0, 0, VIEW_H);
+    sky.addColorStop(0, '#6dc7f5');
+    sky.addColorStop(0.6, '#a8e1ff');
+    sky.addColorStop(1, '#ffcb70');
+    ctx.fillStyle = sky;
+    ctx.fillRect(0, 0, VIEW_W, VIEW_H);
+
+    // Pixelated sun (chunky squares)
+    const sunX = VIEW_W - 100, sunY = 90;
+    ctx.fillStyle = '#ffe082';
+    ctx.fillRect(sunX, sunY, 60, 60);
+    ctx.fillStyle = '#fff59d';
+    ctx.fillRect(sunX + 8, sunY + 8, 44, 44);
+    // Sun rays
+    ctx.fillStyle = '#ffeb3b';
+    for (const d of [[-20, 24], [-20, -8], [80, 24], [80, -8], [24, -28], [24, 80]]) {
+      ctx.fillRect(sunX + d[0], sunY + d[1], 16, 8);
+    }
+
+    // Pixelated distant hills
+    ctx.fillStyle = '#4caf50';
+    for (let i = 0; i < 5; i++) {
+      const hx = i * 200 - 60;
+      ctx.fillRect(hx, VIEW_H - 200, 240, 40);
+      ctx.fillRect(hx + 20, VIEW_H - 220, 200, 20);
+      ctx.fillRect(hx + 50, VIEW_H - 240, 140, 20);
+    }
+
+    // Ground — bright pixel green
+    const groundY = VIEW_H - 100;
+    ctx.fillStyle = '#7fc54a';
+    ctx.fillRect(0, groundY, VIEW_W, 100);
+    ctx.fillStyle = '#558b2f';
+    ctx.fillRect(0, groundY, VIEW_W, 8);
+    ctx.fillStyle = '#33691e';
+    ctx.fillRect(0, groundY + 8, VIEW_W, 4);
+    // Grass tufts (pixel chunks)
+    ctx.fillStyle = '#aed581';
+    for (let i = 0; i < VIEW_W; i += 24) {
+      ctx.fillRect(i, groundY - 4, 12, 4);
+      ctx.fillRect(i + 4, groundY - 8, 4, 4);
+    }
+    // Chunky trees in background
+    ctx.fillStyle = '#5d3a1c';
+    ctx.fillRect(80, groundY - 60, 12, 60);
+    ctx.fillRect(700, groundY - 50, 12, 50);
+    ctx.fillStyle = '#2e7d32';
+    ctx.fillRect(60, groundY - 100, 56, 48);
+    ctx.fillRect(680, groundY - 90, 56, 44);
+    ctx.fillStyle = '#388e3c';
+    ctx.fillRect(72, groundY - 96, 32, 32);
+    ctx.fillRect(692, groundY - 86, 32, 28);
+
+    // Positioning
+    const SCALE = 6;
+    const monkeyW = PIX_MONKEY[0].length * SCALE;
+    const monkeyH = PIX_MONKEY.length * SCALE;
+    const monkeyX = 200;
+    const monkeyY = groundY - monkeyH + 6;
+
+    const hunterTargetX = 520;
+    const hunterW = PIX_HUNTER[0].length * SCALE;
+    const hunterH = PIX_HUNTER.length * SCALE;
+
+    // ===== PHASE 1 (0 - 0.12): jungle establishing shot, monkey idle =====
+    if (progress < 0.55) {
+      // Idle bob for the monkey
+      const bob = Math.floor(Math.sin(progress * 30) * 2) * 2;
+      drawPixSprite(PIX_MONKEY, monkeyX, monkeyY + bob, SCALE, PAL_MONKEY);
+    }
+
+    // ===== PHASE 2 (0.10 - 0.30): hunter walks in from the right =====
+    let hunterX = VIEW_W + 20;
+    if (progress >= 0.10) {
+      const walkP = Math.min(1, (progress - 0.10) / 0.20);
+      hunterX = VIEW_W + 20 - walkP * (VIEW_W + 20 - hunterTargetX);
+    }
+    const hunterY = groundY - hunterH + 6;
+    if (progress >= 0.10 && progress < 0.95) {
+      // Walking foot bob
+      const walkBob = (progress >= 0.10 && progress < 0.30)
+        ? Math.floor(Math.sin(progress * 60) * 1.5) * 2 : 0;
+      drawPixSprite(PIX_HUNTER, hunterX, hunterY + walkBob, SCALE, PAL_HUNTER);
+    }
+
+    // ===== PHASE 3 (0.32 - 0.50): aiming with red laser sight =====
+    if (progress >= 0.32 && progress < 0.50) {
+      const laserA = 0.6 + 0.4 * Math.sin(progress * 80);
+      // Red laser line from gun to monkey chest
+      const gunTipX = hunterX + 4;
+      const gunTipY = hunterY + 6 * SCALE + 3;
+      const targetX = monkeyX + monkeyW * 0.6;
+      const targetY = monkeyY + monkeyH * 0.55;
+      ctx.strokeStyle = `rgba(255, 30, 30, ${laserA * 0.7})`;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(gunTipX, gunTipY);
+      ctx.lineTo(targetX, targetY);
+      ctx.stroke();
+      // Pulsing dot on monkey
+      ctx.fillStyle = `rgba(255, 30, 30, ${laserA})`;
+      ctx.fillRect(targetX - 4, targetY - 4, 8, 8);
+      ctx.fillStyle = `rgba(255, 200, 200, ${laserA})`;
+      ctx.fillRect(targetX - 2, targetY - 2, 4, 4);
+    }
+
+    // ===== PHASE 4 (0.48 - 0.56): BANG — muzzle flash + bullet =====
+    if (progress >= 0.48 && progress < 0.56) {
+      const fp = (progress - 0.48) / 0.08;
+      // Muzzle flash sprite at gun tip
+      const flashScale = SCALE + Math.floor((1 - fp) * 6);
+      const flashW = PIX_FLASH[0].length * flashScale;
+      const flashH = PIX_FLASH.length * flashScale;
+      const gunTipX = hunterX - flashW + 30;
+      const gunTipY = hunterY + 6 * SCALE - flashH/2 + 6;
+      drawPixSprite(PIX_FLASH, gunTipX, gunTipY, flashScale, PAL_FLASH, 1 - fp * 0.3);
+      // Bullet streak crossing toward monkey
+      const bulletX = hunterX + (1 - fp) * 30 - fp * (hunterX - monkeyX - monkeyW * 0.6);
+      const bulletY = hunterY + 6 * SCALE + 3;
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(bulletX - 14, bulletY - 2, 24, 4);
+      ctx.fillStyle = '#ffeb3b';
+      ctx.fillRect(bulletX - 8, bulletY - 1, 12, 2);
+      // BANG! text
+      ctx.fillStyle = `rgba(255, 30, 30, ${1 - fp * 0.5})`;
+      ctx.font = 'bold 72px monospace';
+      ctx.textAlign = 'center';
+      const bangScale = 1 + (1 - fp) * 0.3;
+      ctx.save();
+      ctx.translate(VIEW_W/2, VIEW_H/2 - 50);
+      ctx.scale(bangScale, bangScale);
+      ctx.fillText('BANG!', 0, 0);
+      ctx.fillStyle = `rgba(255, 200, 60, ${1 - fp * 0.5})`;
+      ctx.fillText('BANG!', -3, -3);
+      ctx.restore();
+    }
+
+    // ===== PHASE 5 (0.52 - 0.62): monkey hit — red flash and fall =====
+    if (progress >= 0.52 && progress < 0.62) {
+      const hp = (progress - 0.52) / 0.10;
+      // Red impact flash on monkey
+      const redA = (1 - hp) * 0.85;
+      ctx.fillStyle = `rgba(255, 30, 30, ${redA})`;
+      ctx.fillRect(monkeyX - 10, monkeyY - 10, monkeyW + 20, monkeyH + 20);
+      // Spread red splatter pixels
+      ctx.fillStyle = '#c62828';
+      for (let i = 0; i < 18; i++) {
+        const a = i * 0.7;
+        const r = hp * 80;
+        const px = monkeyX + monkeyW/2 + Math.cos(a) * r;
+        const py = monkeyY + monkeyH/2 + Math.sin(a) * r * 0.5;
+        ctx.fillRect(Math.floor(px / 4) * 4, Math.floor(py / 4) * 4, 6, 6);
+      }
+    }
+
+    // ===== PHASE 6 (0.62 onwards): dead monkey lying down + ghost rising =====
+    if (progress >= 0.62) {
+      const dp = (progress - 0.62) / 0.30;
+      // Dead body
+      const deadW = PIX_MONKEY_DEAD[0].length * SCALE;
+      const deadH = PIX_MONKEY_DEAD.length * SCALE;
+      drawPixSprite(PIX_MONKEY_DEAD, monkeyX + monkeyW/2 - deadW/2, groundY - deadH + 4, SCALE, PAL_MONKEY);
+      // Pixel blood pool
+      ctx.fillStyle = '#7f0000';
+      ctx.fillRect(monkeyX + 10, groundY - 4, monkeyW - 20, 6);
+      ctx.fillStyle = '#c62828';
+      ctx.fillRect(monkeyX + 16, groundY - 2, monkeyW - 32, 4);
+
+      // Ghost monkey rising
+      if (progress >= 0.66) {
+        const gp = Math.min(1, (progress - 0.66) / 0.24);
+        const ghostScale = SCALE + Math.floor(gp * 4);
+        const ghostX = monkeyX + monkeyW/2 - (PIX_GHOST[0].length * ghostScale) / 2;
+        const ghostY = monkeyY - gp * 280;
+        const ghostA = gp < 0.85 ? 1 : 1 - (gp - 0.85) / 0.15;
+        // Faint trail
+        for (let i = 1; i <= 3; i++) {
+          drawPixSprite(PIX_GHOST, ghostX, ghostY + i * 24, ghostScale, PAL_GHOST(ghostA * 0.25), ghostA * 0.3);
+        }
+        drawPixSprite(PIX_GHOST, ghostX, ghostY, ghostScale, PAL_GHOST(ghostA), ghostA);
+      }
+
+      // Golden divine light beam from sky to monkey
+      if (progress >= 0.65) {
+        const lp = Math.min(1, (progress - 0.65) / 0.20);
+        const beamA = lp;
+        const beam = ctx.createLinearGradient(0, 0, 0, VIEW_H);
+        beam.addColorStop(0, `rgba(255, 250, 200, ${beamA * 0.65})`);
+        beam.addColorStop(0.4, `rgba(255, 220, 100, ${beamA * 0.45})`);
+        beam.addColorStop(1, 'rgba(255, 200, 80, 0)');
+        ctx.fillStyle = beam;
+        // Beam cone widening down to monkey
+        ctx.beginPath();
+        ctx.moveTo(monkeyX + monkeyW/2 - 30 * lp, 0);
+        ctx.lineTo(monkeyX + monkeyW/2 + 30 * lp, 0);
+        ctx.lineTo(monkeyX + monkeyW + 30, groundY);
+        ctx.lineTo(monkeyX - 30, groundY);
+        ctx.closePath();
+        ctx.fill();
+        // Falling golden sparks
+        for (let i = 0; i < 14; i++) {
+          const sx = monkeyX + ((i * 27 + Date.now() * 0.06) % monkeyW);
+          const sy = ((i * 47 + Date.now() * 0.15) % groundY);
+          ctx.fillStyle = `rgba(255, 240, 130, ${0.8 * lp})`;
+          ctx.fillRect(Math.floor(sx / 4) * 4, Math.floor(sy / 4) * 4, 4, 4);
+        }
+      }
+    }
+
+    // ===== PHASE 7 (0.88 - 1.00): white-gold flash + ASCENDED title =====
+    if (progress >= 0.88) {
+      const fp = (progress - 0.88) / 0.12;
+      const flashA = fp < 0.4 ? fp / 0.4 : 1 - (fp - 0.4) * 0.5;
+      ctx.fillStyle = `rgba(255, 250, 220, ${flashA})`;
+      ctx.fillRect(0, 0, VIEW_W, VIEW_H);
+      if (fp > 0.2) {
+        const titleA = Math.min(1, (fp - 0.2) * 3);
+        ctx.fillStyle = `rgba(80, 50, 0, ${titleA})`;
+        ctx.font = 'bold 48px monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText('ASCENDED REALM', VIEW_W/2 + 3, VIEW_H/2 + 3);
+        ctx.fillStyle = `rgba(255, 215, 80, ${titleA})`;
+        ctx.fillText('ASCENDED REALM', VIEW_W/2, VIEW_H/2);
+      }
+    }
+  }
+
   function drawHUDOverlay() {
     if (!gameOver && levelTransition <= 0) return;
 
     // ===== Cinematic level transition =====
     if (levelTransition > 0) {
       const progress = 1 - levelTransition / Math.max(1, levelTransitionMax);
+
+      // Pre-game intro: the day the loggers came
+      if (inIntro) {
+        drawIntroScene(progress);
+        return;
+      }
+      // Special L4→L5: pixel-art death-and-ascension scene
+      if (level === 4 && levelTransitionNext === 5) {
+        drawDeathAscensionScene(progress);
+        return;
+      }
+      // Special L5 final: god-monkey rampage scene
+      if (level === 5 && levelTransitionNext === 0) {
+        drawRampageScene(progress);
+        return;
+      }
 
       // Phase 1: brilliant white flash exploding from the goal (0-30%)
       if (progress < 0.35) {
@@ -4702,8 +6099,230 @@
     requestAnimationFrame(loop);
   }
 
-  resetGame();
-  loop();
+  // =========== MAIN MENU + LEADERBOARD ===========
+  const LB_KEY = 'jungleDefender_leaderboard';
+  const USER_KEY = 'jungleDefender_user';
+
+  function getLeaderboard() {
+    try { return JSON.parse(localStorage.getItem(LB_KEY) || '[]'); }
+    catch (e) { return []; }
+  }
+  function saveLeaderboard(scores) {
+    try { localStorage.setItem(LB_KEY, JSON.stringify(scores.slice(0, 50))); }
+    catch (e) {}
+  }
+  function getLoggedInUser() {
+    try { return localStorage.getItem(USER_KEY) || ''; }
+    catch (e) { return ''; }
+  }
+  function setLoggedInUser(name) {
+    try { localStorage.setItem(USER_KEY, name); }
+    catch (e) {}
+  }
+  function clearLoggedInUser() {
+    try { localStorage.removeItem(USER_KEY); }
+    catch (e) {}
+  }
+  function fmtTime(frames) {
+    const s = Math.floor(frames / 60);
+    const m = Math.floor(s / 60);
+    return m + ':' + String(s % 60).padStart(2, '0');
+  }
+
+  function updateLoginUI() {
+    const user = getLoggedInUser();
+    const loginRow = document.getElementById('loginRow');
+    const loggedInRow = document.getElementById('loggedInRow');
+    const loggedInName = document.getElementById('loggedInName');
+    if (user) {
+      loginRow.classList.add('hidden');
+      loggedInRow.classList.remove('hidden');
+      loggedInName.textContent = user;
+    } else {
+      loginRow.classList.remove('hidden');
+      loggedInRow.classList.add('hidden');
+    }
+    // Pending score UI
+    const pending = document.getElementById('pendingScoreRow');
+    if (pendingScore) {
+      pending.classList.remove('hidden');
+      document.getElementById('pendingScoreText').textContent =
+        `${pendingScore.score} pts · ${fmtTime(pendingScore.time)}`;
+    } else {
+      pending.classList.add('hidden');
+    }
+  }
+
+  function renderLeaderboard() {
+    const list = document.getElementById('leaderboardList');
+    const scores = getLeaderboard();
+    scores.sort((a, b) => b.score - a.score || a.time - b.time);
+    const user = getLoggedInUser();
+    if (scores.length === 0) {
+      list.innerHTML = '<div class="lb-empty">No scores yet. Be the first to set a record!</div>';
+      return;
+    }
+    list.innerHTML = scores.slice(0, 15).map((s, i) => {
+      const isMe = user && s.name === user;
+      return `<div class="lb-entry${isMe ? ' me' : ''}">
+        <span><span class="lb-rank">#${i + 1}</span><span class="lb-name">${escapeHtml(s.name)}</span></span>
+        <span class="lb-stats">${s.score} pts · ${fmtTime(s.time)}</span>
+      </div>`;
+    }).join('');
+  }
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function showMainMenu(subtitle) {
+    document.getElementById('mainMenuSubtitle').textContent = subtitle || 'What now?';
+    document.getElementById('mainMenu').classList.remove('hidden');
+    document.getElementById('menuBtn').classList.remove('hidden');
+  }
+  function hideMainMenu() {
+    document.getElementById('mainMenu').classList.add('hidden');
+  }
+  function showLeaderboardPanel() {
+    document.getElementById('leaderboardPanel').classList.remove('hidden');
+    updateLoginUI();
+    renderLeaderboard();
+  }
+  function hideLeaderboardPanel() {
+    document.getElementById('leaderboardPanel').classList.add('hidden');
+  }
+
+  function startStoryFromIntro() {
+    practiceMode = false;
+    gameTime = 0;
+    pendingScore = null;
+    gameOver = false;
+    resetGame(1);
+    inIntro = true;
+    levelTransition = 780;
+    levelTransitionMax = 780;
+    levelTransitionNext = 1;
+    document.getElementById('menuBtn').classList.remove('hidden');
+    removePracticeBanner();
+  }
+
+  function startPracticeMode() {
+    practiceMode = true;
+    inIntro = false;
+    gameOver = false;
+    gameTime = 0;
+    pendingScore = null;
+    resetGame(1);
+    // All abilities EXCEPT flight (flight would trivialize the practice map)
+    glideEnabled = true;
+    dashEnabled = true;
+    blinkEnabled = true;
+    flightEnabled = false;
+    teleportEnabled = true;
+    godForm = false;
+    addPracticeBanner();
+    document.getElementById('menuBtn').classList.remove('hidden');
+  }
+
+  function addPracticeBanner() {
+    removePracticeBanner();
+    const banner = document.createElement('div');
+    banner.id = 'practiceBanner';
+    banner.className = 'practice-banner';
+    banner.textContent = '🎯 PRACTICE MODE — all abilities unlocked';
+    document.getElementById('canvasWrap').appendChild(banner);
+  }
+  function removePracticeBanner() {
+    const b = document.getElementById('practiceBanner');
+    if (b) b.remove();
+  }
+
+  // Called when L5 final rampage completes — show menu instead of just game over
+  function onMainStoryComplete() {
+    pendingScore = { score, time: gameTime };
+    showMainMenu('VENGEANCE COMPLETE');
+  }
+
+  // Wire up buttons
+  document.getElementById('btnPractice').addEventListener('click', () => {
+    hideMainMenu();
+    startPracticeMode();
+  });
+  document.getElementById('btnReplay').addEventListener('click', () => {
+    hideMainMenu();
+    startStoryFromIntro();
+  });
+  document.getElementById('btnLeaderboard').addEventListener('click', () => {
+    hideMainMenu();
+    showLeaderboardPanel();
+  });
+  document.getElementById('btnCloseLeaderboard').addEventListener('click', () => {
+    hideLeaderboardPanel();
+    showMainMenu();
+  });
+  document.getElementById('btnLogin').addEventListener('click', () => {
+    const name = document.getElementById('playerName').value.trim();
+    if (name.length === 0) return;
+    setLoggedInUser(name);
+    updateLoginUI();
+    renderLeaderboard();
+  });
+  document.getElementById('playerName').addEventListener('keydown', e => {
+    if (e.key === 'Enter') document.getElementById('btnLogin').click();
+  });
+  document.getElementById('btnLogout').addEventListener('click', () => {
+    clearLoggedInUser();
+    updateLoginUI();
+    renderLeaderboard();
+  });
+  document.getElementById('btnSaveScore').addEventListener('click', () => {
+    const user = getLoggedInUser();
+    if (!user || !pendingScore) return;
+    const scores = getLeaderboard();
+    scores.push({ name: user, score: pendingScore.score, time: pendingScore.time, date: Date.now() });
+    saveLeaderboard(scores);
+    pendingScore = null;
+    updateLoginUI();
+    renderLeaderboard();
+  });
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    // Open menu mid-game (pauses by virtue of the overlay)
+    showMainMenu('Game in progress');
+  });
+
+  // Pre-populate name field if logged in
+  const initialUser = getLoggedInUser();
+  if (initialUser) document.getElementById('playerName').value = initialUser;
+
+  // Hook into L5 rampage completion: detect when level=5 + levelTransitionNext=0 + levelTransition just hit 0
+  // We do this by overriding the gameOver flow in the transition handler — done via _onFinalDone hook.
+  // The transition handler in update() handles it inline via the existing code path; we tap in by
+  // checking for finalCompleted after each update.
+  let _wasInFinalTransition = false;
+  function checkFinalCompletion() {
+    const inFinal = level === 5 && levelTransitionNext === 0 && levelTransition > 0;
+    if (_wasInFinalTransition && !inFinal && gameOver && win) {
+      // Final transition just completed and gameOver was set
+      onMainStoryComplete();
+      _wasInFinalTransition = false;
+    }
+    _wasInFinalTransition = inFinal;
+  }
+
+  resetGame(1);
+  // Boot into the intro animation — the day the loggers came
+  inIntro = true;
+  levelTransition = 780;
+  levelTransitionMax = 780;
+  levelTransitionNext = 1;
+
+  // Custom loop that adds the menu completion check
+  function loopWithMenu() {
+    update();
+    render();
+    checkFinalCompletion();
+    requestAnimationFrame(loopWithMenu);
+  }
+  loopWithMenu();
 })();
 </script>
 </body>
